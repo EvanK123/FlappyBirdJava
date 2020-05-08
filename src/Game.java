@@ -93,7 +93,7 @@ public class Game
     private void watchForReset() 
     {
         if (restartDelay > 0)
-            restartDelay--;
+            restartDelay--; //
 
         if (keyboard.isDown(KeyEvent.VK_R) && restartDelay <= 0) 
         {
