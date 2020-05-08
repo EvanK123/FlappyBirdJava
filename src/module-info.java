@@ -1,0 +1,2 @@
+module Flaappy_Bird {
+}
