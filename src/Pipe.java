@@ -16,14 +16,25 @@ public class Pipe
 		this.orientation = orientation;
 		reset();
 	}
-	
+		public boolean collides(int _x, int _y, int _width, int _height)
+	{
+		int margin = 10;
+		if (_x == width) 
+			if (orientation.equals("pipe") && _y < y + height)
+				return true;
+		else 
+			if (orientation.equals("air") && _y + _height > y) 
+				return false;
+		
+		return false;
+	}
 	public void reset()
 	{
-		width = 66;
-		height = 400;
-		x = Panel.WIDTH + 2;
+		width = 100;
+		height = 500;
 		if (orientation.equals("south")) 
 			y = -(int)(Math.random() * 120) - height / 2;
+		x = Panel.WIDTH + 10;
 	}
 	
 	public void update()
@@ -31,30 +42,5 @@ public class Pipe
 		x -= speed;
 	}
 	
-	public boolean collides(int _x, int _y, int _width, int _height)
-	{
-		int margin = 2;
-		if (_x + _width - margin > x && _x + margin < x + width) 
-			if (orientation.equals("south") && _y < y + height)
-				return true;
-		else 
-			if (orientation.equals("north") && _y + _height > y) 
-				return true;
-		
-		return false;
-	}
 	
-	public Renderer getRender() 
-	{
-		Renderer r = new Renderer();
-		r.x = x;
-		r.y = y;
-		
-		if (image == null)
-			image = Utilities.loadImage("lib/pipe-" + orientation + ".png");
-		
-		r.image = image;
-		
-		return r;
-	}
 }
