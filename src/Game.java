@@ -20,7 +20,7 @@ public class Game
     public Boolean gameover;
     public Boolean started;
 
-    public Game() 
+    public Game() //
     {
         keyboard = Keyboard.getInstance();
         restart();
