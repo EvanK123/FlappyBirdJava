@@ -42,5 +42,18 @@ public class Pipe
 		x -= speed;
 	}
 	
+	public Renderer getRenders()
+	{
+		Renderer rend = new Renderer();
+		rend.x = x;
+		rend.y = y;
+		
+		if(image == null)
+			image = Utilities.loadImage("lib/pipe-" + orientation + ".png");
+		
+		rend.image = image;
+		
+		return rend;
+	}
 	
 }

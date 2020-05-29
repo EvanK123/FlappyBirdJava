@@ -38,8 +38,12 @@ public class Bird
 
     public void update() 
     {
-        yvel += gravity;
-
+        //yvel += gravity;
+    	if(this.dead)
+    		yvel = 0;
+    	else
+    		yvel += gravity;
+    	
         if (jumpDelay > 0)
             jumpDelay--;
 
