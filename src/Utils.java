@@ -4,8 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class Utilities 
+public class Utils
 {
+
     private static HashMap<String, Image> cache = new HashMap<String, Image>();
 
     public static Image loadImage(String path) 
@@ -26,7 +27,6 @@ public class Utilities
 		{
 		    e.printStackTrace();
         }
-
 		return image;
 	}
 }

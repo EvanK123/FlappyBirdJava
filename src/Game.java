@@ -13,14 +13,14 @@ public class Game
     private int pipeDelay;
 
     private Bird bird;
-    private ArrayList<Pipe> pipes;
+    private ArrayList<Pipes> pipes;
     private Keyboard keyboard;
 
     public int score;
     public Boolean gameover;
     public Boolean started;
 
-    public Game() //
+    public Game() 
     {
         keyboard = Keyboard.getInstance();
         restart();
@@ -38,7 +38,7 @@ public class Game
         pipeDelay = 0;
 
         bird = new Bird();
-        pipes = new ArrayList<Pipe>();
+        pipes = new ArrayList<Pipes>();
     }
 
     public void update() 
@@ -66,25 +66,27 @@ public class Game
     public ArrayList<Renderer> getRenders() 
     {
         ArrayList<Renderer> renders = new ArrayList<Renderer>();
-        renders.add(new Renderer(0, 0, "lib/background.png"));
-        for (Pipe pipe : pipes)
-            renders.add(pipe.getRenders());
-        renders.add(new Renderer(0, 0, "lib/foreground.png"));
+        
+        for (Pipes pipe : pipes)
+            renders.add(pipe.getRender());
+        
         renders.add(bird.getRender());
         return renders;
     }
 
-    private void watchForStart() {
-        if (!started && keyboard.isDown(KeyEvent.VK_SPACE)) {
+    private void watchForStart() 
+    {
+        if (!started && keyboard.isDown(KeyEvent.VK_SPACE)) 
             started = true;
-        }
     }
 
-    private void watchForPause() {
+    private void watchForPause() 
+    {
         if (pauseDelay > 0)
             pauseDelay--;
 
-        if (keyboard.isDown(KeyEvent.VK_P) && pauseDelay <= 0) {
+        if (keyboard.isDown(KeyEvent.VK_P) && pauseDelay <= 0) 
+        {
             paused = !paused;
             pauseDelay = 10;
         }
@@ -93,7 +95,7 @@ public class Game
     private void watchForReset() 
     {
         if (restartDelay > 0)
-            restartDelay--; //
+            restartDelay--;
 
         if (keyboard.isDown(KeyEvent.VK_R) && restartDelay <= 0) 
         {
@@ -107,80 +109,75 @@ public class Game
     {
         pipeDelay--;
 
-        if (pipeDelay < 0) 
-        {
+        if (pipeDelay < 0) {
             pipeDelay = PIPE_DELAY;
-            Pipe northPipe = null;
-            Pipe southPipe = null;
+            Pipes northPipe = null;
+            Pipes southPipe = null;
 
-            // Look for pipes off the screen
-            for (Pipe pipe : pipes) 
+            for (Pipes pipe : pipes) 
             {
                 if (pipe.x - pipe.width < 0) 
                 {
-                    if (northPipe == null) 
+                    if (northPipe == null)
                     {
                         northPipe = pipe;
                     } 
                     else 
-                    	if (southPipe == null)
+                    	if (southPipe == null) 
                     	{
-                    		southPipe = pipe;
-                    		break;
-                    	}
+                        southPipe = pipe;
+                        break;
+                        }
                 }
             }
 
             if (northPipe == null) 
             {
-                Pipe pipe = new Pipe("north");
+            	Pipes pipe = new Pipes("north");
                 pipes.add(pipe);
                 northPipe = pipe;
             } 
             else 
-            {
                 northPipe.reset();
-            }
 
             if (southPipe == null) 
             {
-                Pipe pipe = new Pipe("south");
+            	Pipes pipe = new Pipes("south");
                 pipes.add(pipe);
                 southPipe = pipe;
             } 
             else 
-            {
                 southPipe.reset();
-            }
 
             northPipe.y = southPipe.y + southPipe.height + 175;
         }
 
-        for (Pipe pipe : pipes) 
-        {
+        for (Pipes pipe : pipes) 
             pipe.update();
-        }
-    }
+        
+}
 
-    // not implemented
     private void checkForCollisions() 
     {
-    	for(Pipe pipe: pipes)
-    	{
-    		if(pipe.collides(bird.x, bird.y, bird.width, bird.height))
-    		{
-    			gameover = true;
-    			bird.dead = true;
-    		}
-    		else
-    			if(pipe.x == bird.x && pipe.orientation.equalsIgnoreCase("south"))
-    				score++;
-    	}
-    	
-    	if(bird.y + bird.height > Frame.HEIGHT - 80)
-    	{
-    		gameover = true;
-    		bird.y = Frame.HEIGHT - 80 - bird.height;
-    	}
+
+        for (Pipes pipe : pipes) 
+        {
+            if (pipe.collides(bird.x, bird.y, bird.width, bird.height)) 
+            {
+                gameover = true;
+                bird.dead = true;
+            } 
+            else 
+            	if (pipe.x == bird.x && pipe.orientation.equalsIgnoreCase("south")) 
+                score++;
+        }
+
+        // Ground + Bird collision
+        if (bird.y + bird.height > Main.HEIGHT - 80) 
+        {
+            gameover = true;
+            bird.dead = true;
+            bird.y = Main.HEIGHT - 80 - bird.height;
+        }
     }
 }

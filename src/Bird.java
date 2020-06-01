@@ -4,7 +4,7 @@ import java.awt.geom.AffineTransform;
 
 public class Bird 
 {
-	public int x;
+    public int x;
     public int y;
     public int width;
     public int height;
@@ -19,16 +19,15 @@ public class Bird
 
     private Image image;
     private Keyboard keyboard;
-    
 
     public Bird() 
     {
         x = 100;
         y = 150;
         yvel = 0;
-        width = 45;
-        height = 32;
-        gravity = 0.5;
+        width = 40;
+        height = 30;
+        gravity = 0.6;
         jumpDelay = 0;
         rotation = 0.0;
         dead = false;
@@ -38,12 +37,8 @@ public class Bird
 
     public void update() 
     {
-        //yvel += gravity;
-    	if(this.dead)
-    		yvel = 0;
-    	else
-    		yvel += gravity;
-    	
+        yvel += gravity;
+
         if (jumpDelay > 0)
             jumpDelay--;
 
@@ -58,12 +53,12 @@ public class Bird
 
     public Renderer getRender() 
     {
-        Renderer r = new Renderer();
+    	Renderer r = new Renderer();
         r.x = x;
         r.y = y;
 
-        if (image == null) 
-            image = Utilities.loadImage("lib/bird.png");
+        if (image == null)
+            image = Utils.loadImage("lib/bird.png");
         r.image = image;
 
         rotation = (90 * (yvel + 20) / 20) - 90;

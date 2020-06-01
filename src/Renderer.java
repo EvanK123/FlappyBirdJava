@@ -10,7 +10,7 @@ public class Renderer
     public AffineTransform transform;
 
     public Renderer() 
-    {
+    {    	
     }
 
     public Renderer(int x, int y, String imagePath) 
@@ -18,6 +18,6 @@ public class Renderer
         Toolkit.getDefaultToolkit().sync();
         this.x = x;
         this.y = y;
-        this.image = Utilities.loadImage(imagePath);
+        this.image = Utils.loadImage(imagePath);
     }
 }
