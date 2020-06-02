@@ -1,12 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.awt.geom.*;
 
+// Panel class
 public class Panel extends JPanel implements Runnable 
 {
 
-    private Game game;
+
+	private static final long serialVersionUID = 1L;
+	private Game game;
 
     public Panel() 
     {
@@ -34,6 +35,7 @@ public class Panel extends JPanel implements Runnable
 
         g2D.setColor(Color.RED);
 
+        // logic for drawing instructions onscreen
         if (!game.started) 
         {
             g2D.setFont(new Font("TimesRoman", Font.PLAIN, 20));
@@ -52,6 +54,7 @@ public class Panel extends JPanel implements Runnable
         }
     }
 
+    // update thread
     public void run() 
     {
         try 

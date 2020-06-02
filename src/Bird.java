@@ -2,6 +2,7 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 
+// class for managing the bird
 public class Bird 
 {
     public int x;
@@ -35,6 +36,7 @@ public class Bird
         keyboard = Keyboard.getInstance();
     }
 
+    // velocity and gravity updates
     public void update() 
     {
         yvel += gravity;
@@ -51,6 +53,7 @@ public class Bird
         y += (int)yvel;
     }
 
+    // utilizes the renderer class to render the bird
     public Renderer getRender() 
     {
     	Renderer r = new Renderer();

@@ -9,6 +9,7 @@ public class Utils
 
     private static HashMap<String, Image> cache = new HashMap<String, Image>();
 
+    //load image
     public static Image loadImage(String path) 
     {
         Image image = null;

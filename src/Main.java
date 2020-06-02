@@ -1,5 +1,8 @@
 import javax.swing.*;
 
+/**
+ * Run this to run the game
+ */
 public class Main 
 {
     public static int WIDTH = 500;
@@ -7,6 +10,7 @@ public class Main
 
     public static void main(String[] args) 
     {
+    	// main jframe
         JFrame frame = new JFrame();
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

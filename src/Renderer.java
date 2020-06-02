@@ -1,7 +1,7 @@
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
-
+// renderer class
 public class Renderer
 {
     public int x;
@@ -12,7 +12,7 @@ public class Renderer
     public Renderer() 
     {    	
     }
-
+// what other classes utilize
     public Renderer(int x, int y, String imagePath) 
     {
         Toolkit.getDefaultToolkit().sync();

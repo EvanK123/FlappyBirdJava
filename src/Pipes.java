@@ -1,5 +1,6 @@
 import java.awt.Image;
 
+// pipe management class
 public class Pipes
 {
 
@@ -13,12 +14,14 @@ public class Pipes
 
     private Image image;
 
+    // determines orientation of pipes
     public Pipes(String orientation) 
     {
         this.orientation = orientation;
         reset();
     }
 
+   
     public void reset() 
     {
         width = 66;
@@ -29,11 +32,13 @@ public class Pipes
             y = -(int)(Math.random() * 120) - height / 2;
     }
 
+    // updates pipes location
     public void update() 
     {
         x -= speed;
     }
 
+    // collision tests
     public boolean collides(int _x, int _y, int _width, int _height) 
     {
         int margin = 2;
@@ -50,6 +55,7 @@ public class Pipes
         return false;
     }
 
+    // utilizes the renderer class to render the pipes (with orientation)
     public Renderer getRender() 
     {
     	Renderer r = new Renderer();

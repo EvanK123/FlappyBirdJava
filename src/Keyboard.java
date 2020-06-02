@@ -1,6 +1,7 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+//key listener class
 public class Keyboard implements KeyListener 
 {
 
