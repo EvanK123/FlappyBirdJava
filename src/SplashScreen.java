@@ -32,8 +32,7 @@ public class SplashScreen extends JWindow {
         content.add(authors, BorderLayout.NORTH);
 
         setVisible(true);
-         
-        // Wait a little while, maybe while loading resources
+       
         try { Thread.sleep(duration); } catch (Exception e) {}
          
         setVisible(false);
