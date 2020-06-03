@@ -20,15 +20,15 @@ public class SplashScreen extends JWindow
         content.setBackground(Color.white);
          
         // Set the window's bounds, centering the window
-        int width = 1000;
-        int height = 520;
+        int width = 520;
+        int height = 500;
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (screen.width-width)/2;
         int y = (screen.height-height)/2;
         setBounds(x,y,width,height);
          
         // Build the splash screen
-        JLabel image = new JLabel(new ImageIcon("welcome.png"));
+        JLabel image = new JLabel(new ImageIcon("lib/the_real_welcome.png"));
         JLabel authors = new JLabel("Welcome to Flappy Bird. Enjoy!");
         authors.setFont(new Font("Ariel", Font.BOLD, 30));
         content.add(image, BorderLayout.CENTER);

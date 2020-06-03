@@ -26,9 +26,7 @@ public class Keyboard implements KeyListener
 	public void keyPressed(KeyEvent e) 
 	{
 		if (e.getKeyCode() >= 0 && e.getKeyCode() < keys.length) 
-		{
 			keys[e.getKeyCode()] = true;
-		}
 	}
 	
 	public void keyReleased(KeyEvent e) 

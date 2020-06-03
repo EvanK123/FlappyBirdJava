@@ -39,16 +39,16 @@ public class Pipes
     }
 
     // collision tests
-    public boolean collides(int _x, int _y, int _width, int _height) 
+    public boolean collides(int x1, int y1, int width1, int height1) 
     {
         int margin = 2;
 
-        if (_x + _width - margin > x && _x + margin < x + width) 
+        if (x1 + width1 - margin > x && x1 + margin < x + width) 
         {
-            if (orientation.equals("south") && _y < y + height) 
+            if (orientation.equals("south") && y1 < y + height) 
                 return true;
             else 
-            	if (orientation.equals("north") && _y + _height > y) 
+            	if (orientation.equals("north") && y1 + height1 > y) 
             		return true;
         }
 
