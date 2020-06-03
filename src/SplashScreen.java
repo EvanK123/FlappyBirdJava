@@ -27,7 +27,7 @@ public class SplashScreen extends JWindow
         int y = (screen.height-height)/2;
         setBounds(x,y,width,height);
          
-        // Build the splash screen
+
         JLabel image = new JLabel(new ImageIcon("lib/YES.png"));
         JLabel authors = new JLabel("Welcome to Flappy Bird. Enjoy!");
         authors.setFont(new Font("Ariel", Font.BOLD, 30));

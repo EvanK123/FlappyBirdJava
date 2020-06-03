@@ -46,7 +46,7 @@ public class Panel extends JPanel implements Runnable
         // logic for drawing instructions onscreen
         if (!game.started) 
         {
-        	
+   
         	g2D.setColor(Color.blue);
             g2D.setFont(new Font("TimesRoman", Font.PLAIN, 20));
             g2D.drawString("SPACE to Start", 175, 100);
