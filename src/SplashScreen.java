@@ -1,17 +1,20 @@
 import java.awt.*;
 import javax.swing.*;
  
-public class SplashScreen extends JWindow {
+public class SplashScreen extends JWindow
+{
      
     private int duration;
      
-    public SplashScreen(int d) {
+    public SplashScreen(int d)
+    {
         duration = d;
     }
      
     // A simple little method to show a title screen in the center
     // of the screen for the amount of time given in the constructor
-    public void showSplash() {
+    public void showSplash() 
+    {
          
         JPanel content = (JPanel)getContentPane();
         content.setBackground(Color.white);
