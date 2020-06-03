@@ -26,11 +26,19 @@ public class Panel extends JPanel implements Runnable
         super.paintComponent(g);
 
         Graphics2D g2D = (Graphics2D) g;
+        g2D.setBackground(Color.black);
         for (Renderer r : game.getRenders())
             if (r.transform != null)
+            {
+            	g2D.setColor(Color.blue);
                 g2D.drawImage(r.image, r.transform, null);
+            }
             else
+            { 
+            	g2D.setColor(Color.blue);
                 g.drawImage(r.image, r.x, r.y, null);
+            }
+           
 
 
         g2D.setColor(Color.RED);
@@ -38,18 +46,19 @@ public class Panel extends JPanel implements Runnable
         // logic for drawing instructions onscreen
         if (!game.started) 
         {
-            g2D.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+        	g2D.setColor(Color.blue);
+            g2D.setFont(new Font("TimesRoman", Font.BOLD, 20));
             g2D.drawString("Press SPACE to start", 150, 240);
         } 
         else 
         {
-            g2D.setFont(new Font("TimesRoman", Font.PLAIN, 24));
+            g2D.setFont(new Font("TimesRoman", Font.ITALIC, 24));
             g2D.drawString(Integer.toString(game.score), 10, 465);
         }
 
         if (game.gameover) 
         {
-            g2D.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+            g2D.setFont(new Font("TimesRoman", Font.CENTER_BASELINE, 20));
             g2D.drawString("Press R to restart", 150, 240);
         }
     }
