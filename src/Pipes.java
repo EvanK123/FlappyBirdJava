@@ -8,7 +8,7 @@ public class Pipes
     public int y;
     public int width;
     public int height;
-    public int speed = 3;
+    public int speed = 4;
 
     public String orientation;
 
@@ -40,7 +40,7 @@ public class Pipes
 
     // collision tests
     public Rectangle collison(int x1, int y1, int width1, int height1) 
-    {
+    { 
     	return (new Rectangle (x, y, width, height));
     } 
     public Rectangle bird_collision(int x1, int y1, int width1, int height1) 
@@ -56,6 +56,9 @@ public class Pipes
     	if (bird.intersects(pipe) || pipe.intersects(bird)) 
     		return true; 
     	else 
+    		if (b.x == p.x && b.x <= p.y - 400) 
+    			return true; 
+    		else 
     		return false;
     }
     	

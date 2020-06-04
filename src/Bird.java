@@ -1,6 +1,8 @@
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
+import java.util.Random;
 
 // class for managing the bird
 public class Bird 
@@ -23,12 +25,13 @@ public class Bird
 
     public Bird() 
     {
+    	Random rand = new Random();
         x = 100;
         y = 150;
         yvel = 0;
         width = 40;
         height = 30;
-        gravity = 0.6;
+        gravity = .3;
         jumpDelay = 0;
         rotation = 0.0;
         dead = false;
@@ -47,7 +50,7 @@ public class Bird
         if (!dead && keyboard.isDown(KeyEvent.VK_SPACE) && jumpDelay <= 0) 
         {
             yvel = -10;
-            jumpDelay = 10;
+            jumpDelay = 50;
         }
 
         y += (int)yvel;
@@ -77,4 +80,9 @@ public class Bird
 
         return r;
     }
+    public Rectangle bird_collision(int x1, int y1, int width1, int height1) 
+    { 
+    	Bird b = new Bird(); 
+    	return (new Rectangle(b.x, b.y, b.width, b.height));
+    } 
 }

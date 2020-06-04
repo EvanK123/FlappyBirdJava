@@ -25,19 +25,17 @@ public class Main
     {
     	SplashScreen splsh = new SplashScreen(1500);
     	splsh.showSplash();
-    	// main jframe
         JFrame frame = new JFrame();
-        frame.setBackground(Color.blue);
+        frame.setBackground(Color.red);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-
+        frame.setLocationRelativeTo( null);
         Keyboard keyboard = Keyboard.getInstance();
         frame.addKeyListener(keyboard);
-
         Panel panel = new Panel();
         frame.add(panel);
         frame.setResizable(false);
         frame.setSize(WIDTH, HEIGHT);
     }
 }
+         

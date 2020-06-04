@@ -31,7 +31,6 @@ public class Game
         paused = false;
         started = false;
         gameover = false;
-
         score = 0;
         pauseDelay = 0;
         restartDelay = 0;
@@ -159,20 +158,19 @@ public class Game
 
     private void checkForCollisions() 
     {
-
+    	Pipes northPipe = new Pipes("north");
+    	Pipes southPipe = new Pipes("south");
         for (Pipes pipe : pipes) 
         {
-            if (pipe.collides(bird.x, bird.y, bird.width, bird.height)) 
+            if (pipe.collide_test(northPipe) || pipe.collide_test(southPipe)) 
             {
                 gameover = true;
                 bird.dead = true;
             } 
             else 
-            	if (pipe.x == bird.x && pipe.orientation.equalsIgnoreCase("south")) 
+            	if (pipe.x == bird.x && !pipe.collide_test(southPipe) && !pipe.collide_test(northPipe)) 
                 score++;
         }
-
-        // Ground + Bird collision
         if (bird.y + bird.height > Main.HEIGHT - 80) 
         {
             gameover = true;
@@ -180,4 +178,4 @@ public class Game
             bird.y = Main.HEIGHT - 80 - bird.height;
         }
     }
-}
+} //pipe.x == bird.x && pipe.orientation.equalsIgnoreCase("south"
