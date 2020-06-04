@@ -20,7 +20,6 @@ public class Panel extends JPanel implements Runnable
         game.update();
         repaint();
     }
-
     protected void paintComponent(Graphics g) 
     {
     	Renderer r = new Renderer();
@@ -31,21 +30,17 @@ public class Panel extends JPanel implements Runnable
         picLabel.setLocation(r.x, r.y);
         imagepanel.setBackground(Color.black);
         for (Renderer r1 : game.getRenders())
-            if (r1.transform != null)
-            {
-            	imagepanel.add(picLabel);
-            	imagepanel.setBackground(Color.blue);
+  if (r1.transform != null)
+          {
+           	imagepanel.add(picLabel);
+           	imagepanel.setBackground(Color.blue);
             	g.drawImage(r1.image, r1.x, r1.y, null);
-            }
-            else
-            { 
-            	imagepanel.setBackground(Color.BLACK);
+           }
+         else
+         { 
+         	imagepanel.setBackground(Color.BLACK);
                 g.drawImage(r1.image, r1.x, r1.y, null);
             }
-           
-
-
-        // logic for drawing instructions onscreen
         if (game.started == false) 
         {
    
@@ -67,7 +62,6 @@ public class Panel extends JPanel implements Runnable
         //    g2D.drawString("Your score is " + Integer.toString(game.score), 175, 120);
         }
     }
-
     // update thread
     public void run() 
     {

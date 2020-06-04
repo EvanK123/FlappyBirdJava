@@ -1,5 +1,5 @@
 import java.awt.Image;
-
+import java.awt.Rectangle;
 // pipe management class
 public class Pipes
 {
@@ -39,21 +39,27 @@ public class Pipes
     }
 
     // collision tests
-    public boolean collides(int x1, int y1, int width1, int height1) 
+    public Rectangle collison(int x1, int y1, int width1, int height1) 
     {
-        int margin = 2;
-
-        if (x1 + width1 - margin > x && x1 + margin < x + width) 
-        {
-            if (orientation.equals("south") && y1 < y + height) 
-                return true;
-            else 
-            	if (orientation.equals("north") && y1 + height1 > y) 
-            		return true;
-        }
-
-        return false;
+    	return (new Rectangle (x, y, width, height));
+    } 
+    public Rectangle bird_collision(int x1, int y1, int width1, int height1) 
+    { 
+    	Bird b = new Bird(); 
+    	return (new Rectangle(b.x, b.y, b.width, b.height));
+    } 
+    public boolean collide_test(Pipes p) 
+    { 
+    	Bird b = new Bird();
+    	Rectangle bird = b.bird_collision(b.x, b.y, b.width, b.height);
+    	Rectangle pipe = collison(p.x, p.y, p.width, p.height); 
+    	if (bird.intersects(pipe) || pipe.intersects(bird)) 
+    		return true; 
+    	else 
+    		return false;
     }
+    	
+ 
 
     // utilizes the renderer class to render the pipes (with orientation)
     public Renderer getRender() 
