@@ -23,45 +23,48 @@ public class Panel extends JPanel implements Runnable
 
     protected void paintComponent(Graphics g) 
     {
+    	Renderer r = new Renderer();
         super.paintComponent(g);
-
-        Graphics2D g2D = (Graphics2D) g;
-        g2D.setBackground(Color.black);
-        for (Renderer r : game.getRenders())
-            if (r.transform != null)
+        JPanel imagepanel = new JPanel();
+        JLabel picLabel = new JLabel(new ImageIcon("lib/bird.png"));
+        imagepanel.add(picLabel);
+        picLabel.setLocation(r.x, r.y);
+        imagepanel.setBackground(Color.black);
+        for (Renderer r1 : game.getRenders())
+            if (r1.transform != null)
             {
-            	g2D.setColor(Color.blue);
-                g2D.drawImage(r.image, r.transform, null);
+            	imagepanel.add(picLabel);
+            	imagepanel.setBackground(Color.blue);
+            	g.drawImage(r1.image, r1.x, r1.y, null);
             }
             else
             { 
-            	g2D.setColor(Color.blue);
-                g.drawImage(r.image, r.x, r.y, null);
+            	imagepanel.setBackground(Color.BLACK);
+                g.drawImage(r1.image, r1.x, r1.y, null);
             }
            
 
 
-        g2D.setColor(Color.BLACK);
-
         // logic for drawing instructions onscreen
-        if (!game.started) 
+        if (game.started == false) 
         {
    
-        	g2D.setColor(Color.blue);
-            g2D.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-            g2D.drawString("SPACE to Start", 175, 100);
+        	imagepanel.setBackground(Color.blue);
+            imagepanel.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
+            
+          //  imagepanel.drawString("SPACE to Start", 175, 100);
         } 
         else 
         {
-            g2D.setFont(new Font("TimesRoman", Font.ITALIC, 24));
-            g2D.drawString(Integer.toString(game.score), 10, 465);
+            imagepanel.setFont(new Font("TimesRoman", Font.ITALIC, 24));
+          //  imagepanel.drawString(Integer.toString(game.score), 10, 465);
         }
 
         if (game.gameover) 
         {
-            g2D.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-            g2D.drawString("R to Restart", 175, 100);
-            g2D.drawString("Your score is " + Integer.toString(game.score), 175, 120);
+            imagepanel.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+        //    g2D.drawString("R to Restart", 175, 100);
+        //    g2D.drawString("Your score is " + Integer.toString(game.score), 175, 120);
         }
     }
 
