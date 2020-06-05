@@ -13,7 +13,8 @@ public class Bird
     public int height;
 
     public boolean dead;
-
+    Renderer r1 = new Renderer(); 
+    
     public double yvel;
     public double gravity;
 
@@ -50,7 +51,7 @@ public class Bird
         if (!dead && keyboard.isDown(KeyEvent.VK_SPACE) && jumpDelay <= 0) 
         {
             yvel = -10;
-            jumpDelay = 50;
+            jumpDelay = 10;
         }
 
         y += (int)yvel;
@@ -77,8 +78,8 @@ public class Bird
         r.transform.translate(x + width / 2, y + height / 2);
         r.transform.rotate(rotation);
         r.transform.translate(-width / 2, -height / 2);
-
-        return r;
+        r1 = r;
+        return r1;
     }
     public Rectangle bird_collision(int x1, int y1, int width1, int height1) 
     { 

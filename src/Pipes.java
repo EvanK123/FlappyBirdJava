@@ -53,11 +53,8 @@ public class Pipes
     	Bird b = new Bird();
     	Rectangle bird = b.bird_collision(b.x, b.y, b.width, b.height);
     	Rectangle pipe = collison(p.x, p.y, p.width, p.height); 
-    	if (bird.intersects(pipe) || pipe.intersects(bird)) 
+    	if (bird.intersects(pipe)) 
     		return true; 
-    	else 
-    		if (b.x == p.x && b.x <= p.y - 400) 
-    			return true; 
     		else 
     		return false;
     }

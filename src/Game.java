@@ -159,16 +159,15 @@ public class Game
     private void checkForCollisions() 
     {
     	Pipes northPipe = new Pipes("north");
-    	Pipes southPipe = new Pipes("south");
         for (Pipes pipe : pipes) 
         {
-            if (pipe.collide_test(northPipe) || pipe.collide_test(southPipe)) 
+            if (pipe.collide_test(northPipe)) 
             {
                 gameover = true;
                 bird.dead = true;
             } 
             else 
-            	if (pipe.x == bird.x && !pipe.collide_test(southPipe) && !pipe.collide_test(northPipe)) 
+            	if (pipe.x == bird.x && !pipe.collide_test(northPipe)) 
                 score++;
         }
         if (bird.y + bird.height > Main.HEIGHT - 80) 
